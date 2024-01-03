@@ -8,7 +8,13 @@ const cors = require("cors");
 
 // Middleware for parsing request bodies
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(
+    {
+        origin: ["https://deploy-mern-1whq.vercel.app"],
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        credentials: true
+    }
+));
 app.use('/user', userRouter);
 app.use('/todo', todoRouter);
 
