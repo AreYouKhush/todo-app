@@ -18,6 +18,10 @@ app.use(cors(
 app.use('/user', userRouter);
 app.use('/todo', todoRouter);
 
+app.get("/", (req, res) => {
+    res.json({Message: "Hello, Welcome"})
+})
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
