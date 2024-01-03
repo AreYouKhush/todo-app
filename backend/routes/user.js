@@ -4,6 +4,8 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const authMiddleware = require("../middlewares/Auth");
 const router = Router();
+const jwtSecret = "SomeSecret"
+require('dotenv').config()
 
 router.get("/auth", authMiddleware, (req, res) => {
   res.send({ msg: "Success" });
@@ -24,7 +26,7 @@ router.post("/signup", async (req, res) => {
       password: hashPassword,
     });
     await newUser.save();
-    res.send({ msg: "Success" });
+    res.send({ msg: "Success"});
   }
 });
 
@@ -35,9 +37,8 @@ router.post("/signin", async (req, res) => {
   if (findUser) {
     const isMatch = await bcrypt.compare(password, findUser.password);
     if (isMatch) {
-      const token = jwt.sign({ username }, "SomeSecret");
-      const todos = await Todo.find({ username: username });
-      res.send({ token: token, todos: todos });
+      const token = jwt.sign({ username }, jwtSecret);
+      res.send({ token: token });
     } else {
       res.send({ msg: "Incorrect Password" });
     }

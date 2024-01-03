@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
+require('dotenv').config()
 
 // Connect to MongoDB
 mongoose.connect(
-    "mongodb+srv://mongodb:prouddaddy%4008@mango.8uhvicf.mongodb.net/todo-app?retryWrites=true&w=majority"
+    process.env.DB_URI
 );
 
 // Define schemas
