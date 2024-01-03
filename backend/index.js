@@ -10,7 +10,7 @@ const cors = require("cors");
 app.use(bodyParser.json());
 app.use(cors(
     {
-        origin: ["https://deploy-mern-1whq.vercel.app"],
+        origin: ["https://todo-app-sooty-five-23.vercel.app/"],
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true
     }
