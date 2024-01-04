@@ -20,7 +20,7 @@ app.use("/user", userRouter);
 app.use("/todo", todoRouter);
 
 app.get("/", (req, res) => {
-  res.json({ Message: "Hello, Welcome" });
+  res.json({ Message: "Connected" });
 });
 
 app.listen(PORT, () => {
