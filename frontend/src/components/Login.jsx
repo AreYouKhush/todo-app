@@ -6,6 +6,7 @@ import { LoginSchema } from "../helpers/FormSchema";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useGlobalContext } from "../context";
+import { backendUrl } from "../helpers/Url";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const Login = () => {
 
   const onSubmit = async (values) => {
     const response = await axios.post(
-      "http://localhost:3000/user/signin",
+      `${backendUrl}user/signin`,
       values
     );
     if (!response.data.msg) {

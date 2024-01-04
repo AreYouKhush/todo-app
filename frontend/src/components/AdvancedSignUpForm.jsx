@@ -5,10 +5,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import CustomInput from "./CustomInput";
 import axios from "axios";
 import { useGlobalContext } from "../context";
+import { backendUrl } from "../helpers/Url";
 
 const SignUp = () => {
-  const navigate = useNavigate()
-  const {mode} = useGlobalContext()
+  const navigate = useNavigate();
+  const { mode } = useGlobalContext();
 
   const initialValues = {
     name: "",
@@ -19,19 +20,19 @@ const SignUp = () => {
 
   const onSubmit = async (values, actions) => {
     const response = await axios.post(
-      "http://localhost:3000/user/signup",
+      `${backendUrl}user/signup`,
       values
     );
-    if(response.data.msg === 'Success'){
-      navigate('/login')
+    if (response.data.msg === "Success") {
+      navigate("/login");
     }
   };
 
-  useEffect(()=> {
-    if(mode === "logged-in"){
-      return navigate("/")
+  useEffect(() => {
+    if (mode === "logged-in") {
+      return navigate("/");
     }
-  })
+  });
 
   return (
     <div className="flex justify-center h-dvh items-center">

@@ -4,26 +4,27 @@ import Navbar from "./components/Navbar";
 import { useCookies } from "react-cookie";
 import { useGlobalContext } from "./context";
 import axios from "axios";
+import { backendUrl } from "./helpers/Url";
 
 const App = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const { mode, setMode } = useGlobalContext();
 
   const authVerifyToken = async () => {
-    const response = await axios.get("http://localhost:3000/user/auth", {
+    const response = await axios.get(`${backendUrl}user/auth`, {
       headers: {
         token: cookies.token,
       },
     });
-    if(response.data.msg === "Success"){
-      setMode("logged-in")
-    }else{
-      setMode("logged-out")
+    if (response.data.msg === "Success") {
+      setMode("logged-in");
+    } else {
+      setMode("logged-out");
     }
   };
 
   useEffect(() => {
-    if(cookies.token){
+    if (cookies.token) {
       setMode("logged-in");
     }
     authVerifyToken();

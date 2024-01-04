@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useCookies } from "react-cookie";
 import { Formik, Form, Field } from "formik";
+import { backendUrl } from "../helpers/Url";
 
 const CreateTodo = ({ todo, setTodo }) => {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
@@ -15,13 +16,13 @@ const CreateTodo = ({ todo, setTodo }) => {
     const token = cookies.token;
     if (values.title !== "" || values.description !== "") {
       const response = await axios.post(
-        "http://localhost:3000/todo/new",
+        `${backendUrl}todo/new`,
         values,
         {
           headers: { token: token },
         }
       );
-      const response2 = await axios.get("http://localhost:3000/todo/", {
+      const response2 = await axios.get(`${backendUrl}todo/`, {
         headers: {
           token: token,
         },

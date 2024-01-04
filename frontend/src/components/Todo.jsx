@@ -5,6 +5,7 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
+import { backendUrl } from "../helpers/Url";
 
 const Todo = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Todo = () => {
 
   const deleteTodo = async (id) => {
     const response = await axios.delete(
-      `http://localhost:3000/todo/delete/${id}`,
+      `${backendUrl}todo/delete/${id}`,
       { headers: { token: cookies.token } }
     );
     const filteredTodo = todo.filter((t) => t._id != id);
@@ -33,7 +34,7 @@ const Todo = () => {
   const saveTodo = async (values) => {
     const token = cookies.token;
     const response = await axios.put(
-      `http://localhost:3000/todo/edit/${values.id}`,
+      `${backendUrl}todo/edit/${values.id}`,
       values,
       {
         headers: { token: token },
@@ -54,7 +55,7 @@ const Todo = () => {
   };
 
   const getTodos = async () => {
-    const response = await axios.get("http://localhost:3000/todo/", {
+    const response = await axios.get(`${backendUrl}todo/`, {
       headers: {
         token: cookies.token,
       },
