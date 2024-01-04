@@ -14,11 +14,12 @@ app.use(
     credentials: true,
   })
 );
-app.use("/user", userRouter);
-app.use("/todo", todoRouter);
 
 app.get("/", (req, res) => {
   res.json({ Message: "Connected" });
 });
+
+app.use("/user", userRouter);
+app.use("/todo", todoRouter);
 
 module.exports = app
