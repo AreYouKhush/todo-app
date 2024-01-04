@@ -9,7 +9,7 @@ const cors = require("cors");
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: ["https://todo-app-api-one.vercel.app"],
+    origin: ["https://todo-app-eight-pi-42.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     credentials: true,
   })
