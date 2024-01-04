@@ -2,8 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const PORT = 3000;
-const userRouter = require("./routes/user");
-const todoRouter = require("./routes/todo");
+const userRouter = require("./api/routes/user");
+const todoRouter = require("./api/routes/todo");
 const cors = require("cors");
 
 // Middleware for parsing request bodies
