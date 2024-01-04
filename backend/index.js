@@ -19,6 +19,10 @@ app.use(
 app.use("/user", userRouter);
 app.use("/todo", todoRouter);
 
+app.get("/", (req, res) => {
+  res.json({ Message: "Connected" });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
