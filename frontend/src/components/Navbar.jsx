@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../context";
 import { useCookies } from "react-cookie";
+import AccountMenu from "./AccountMenu";
 
 const Navbar = () => {
   const { mode, setMode } = useGlobalContext();
@@ -18,7 +19,7 @@ const Navbar = () => {
     <>
       <div className="fixed top-0 left-0 w-full bg-slate-400 px-5 py-3 flex justify-center items-center text-xl font-bold text-slate-700">
         <NavLink className="text-4xl">Todo Todo</NavLink>
-        <div className="fixed top-0 right-0 px-5 py-2 flex gap-6 font-semibold">
+        <div className="fixed top-0 right-0 px-5 py-2 gap-6 font-semibold hidden md:flex">
           {mode === "logged-out" ? (
             <>
               <NavLink
@@ -42,6 +43,9 @@ const Navbar = () => {
               Logout
             </button>
           )}
+        </div>
+        <div className="fixed top-0 right-0 px-5 py-3 gap-6 font-semibold flex md:hidden">
+          <AccountMenu></AccountMenu>
         </div>
       </div>
     </>
