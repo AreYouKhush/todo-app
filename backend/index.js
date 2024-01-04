@@ -1,27 +1,6 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const app = express();
-const PORT = 3000;
-const userRouter = require("./api/routes/user");
-const todoRouter = require("./api/routes/todo");
-const cors = require("cors");
+const app = require('./app');
 
-// Middleware for parsing request bodies
-app.use(bodyParser.json());
-app.use(
-  cors({
-    origin: ["https://todo-app-api-one.vercel.app/"],
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    credentials: true,
-  })
-);
-app.use("/user", userRouter);
-app.use("/todo", todoRouter);
-
-app.get("/", (req, res) => {
-  res.json({ Message: "Connected" });
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Listening: http://localhost:${port}`);
 });
