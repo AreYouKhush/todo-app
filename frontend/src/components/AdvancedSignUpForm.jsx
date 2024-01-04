@@ -67,7 +67,7 @@ const SignUp = () => {
               placeholder="Confirm password"
               label="Confirm Password"
             />
-            <NavLink to="/signup" className="hover:opacity-85 text-sm">
+            <NavLink to="/login" className="hover:opacity-85 text-sm">
               already registered? login
             </NavLink>
             <button

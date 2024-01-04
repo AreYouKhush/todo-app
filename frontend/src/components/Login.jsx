@@ -58,7 +58,7 @@ const Login = () => {
                 name="password"
                 placeholder="Password"
               />
-              <NavLink to="/login" className="hover:opacity-85 text-sm">
+              <NavLink to="/signup" className="hover:opacity-85 text-sm">
                 not registered yet? signup
               </NavLink>
               <button
